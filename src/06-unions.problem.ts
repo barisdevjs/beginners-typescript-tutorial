@@ -16,5 +16,5 @@ export const defaultUser: User = {
   firstName: "Matt",
   lastName: "Pocock",
   // @ts-expect-error
-  role: "I_SHOULD_NOT_BE_ALLOWED",
+  role: 'admin' | 'user' | 'super-admin',
 };
