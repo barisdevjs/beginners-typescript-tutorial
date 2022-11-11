@@ -2,6 +2,7 @@ interface User {
   id: string;
   firstName: string;
   lastName: string;
+  posts: Post[]
 }
 
 interface Post {
@@ -14,7 +15,22 @@ interface Post {
  * How do we type this return statement so it's both
  * User AND { posts: Post[] }
  */
-export const getDefaultUserAndPosts = (): unknown => {
+export const getDefaultUserAndPosts = (): User => {
+  return {
+    id: "1",
+    firstName: "Matt",
+    lastName: "Pocock",
+    posts: [
+      {
+        id: "1",
+        title: "How I eat so much cheese",
+        body: "It's pretty edam difficult",
+      },
+    ],
+  };
+};
+
+export const getDefaultUserAndPosts1 = (): User & { posts: Post[] } => {
   return {
     id: "1",
     firstName: "Matt",
@@ -30,5 +46,10 @@ export const getDefaultUserAndPosts = (): unknown => {
 };
 
 const userAndPosts = getDefaultUserAndPosts();
+const userAndPosts1 = getDefaultUserAndPosts1();
+
 
 console.log(userAndPosts.posts[0]);
+console.log(userAndPosts1.posts[0]);
+
+
